@@ -13,8 +13,9 @@ export OP_BUILD_PATH=$PWD
 git clone https://github.com/coolsnowwolf/lede.git
 cd "${OP_BUILD_PATH}"/lede || exit
 ./scripts/feeds update -a && ./scripts/feeds install -a
-rm -rf ./tmp && rm -rf .config
+rm -rf ./tmp && rm -rf .config && rm -rf .feeds.conf
 mv "${OP_BUILD_PATH}"/.config "${OP_BUILD_PATH}"/lede/.config
+mv "${OP_BUILD_PATH}"/.feeds.conf "${OP_BUILD_PATH}"/lede/.feeds.conf
 sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
 make defconfig
 make download -j8
