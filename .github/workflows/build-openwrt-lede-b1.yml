@@ -36,6 +36,15 @@ jobs:
           sudo apt-get -qq autoremove --purge
           sudo apt-get -qq clean
 
+      # Automatically configure credentials, and set user name and email.
+      - name: 'Configurable GIT'
+        uses: nodef/git-config.action@v1.0.0
+        with:
+          credentials: auto
+          entries: |-
+            user.name  = Shine
+            user.email = deathbook1999@gmail.com
+
       - name: Build lede
         run: |
           chmod +x build.sh && ./build.sh
