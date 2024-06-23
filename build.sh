@@ -11,9 +11,6 @@ sudo apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bis
 
 export OP_BUILD_PATH=$PWD
 git clone https://github.com/coolsnowwolf/lede.git
-# Patch
-rm -rf 
-git clone https://github.com/coolsnowwolf/routing/tree/5437d2c91fd9f15e06fbea46677abb529ed3547c 
 cd "${OP_BUILD_PATH}"/lede || exit
 ./scripts/feeds update -a && ./scripts/feeds install -a
 rm -rf ./tmp && rm -rf .config
