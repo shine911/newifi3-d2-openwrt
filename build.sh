@@ -18,10 +18,10 @@ cd "${OP_BUILD_PATH}"/lede || exit
 # start: revert commit upx: bump to v4.2.2 [https://github.com/coolsnowwolf/lede/commit/24e2cfc64fb1072145b2a57a3702fec204e900ad]
 git revert 24e2cfc64fb1072145b2a57a3702fec204e900ad
 # end: revert commit upx: bump to v4.2.2 [https://github.com/coolsnowwolf/lede/commit/24e2cfc64fb1072145b2a57a3702fec204e900ad]
-./scripts/feeds update -a && ./scripts/feeds install -a
 rm -rf ./tmp && rm -rf .config && rm -rf feeds.conf.default
 mv "${OP_BUILD_PATH}"/.config "${OP_BUILD_PATH}"/lede/.config
 mv "${OP_BUILD_PATH}"/feeds.conf "${OP_BUILD_PATH}"/lede/feeds.conf
+./scripts/feeds update -a && ./scripts/feeds install -a
 sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
 make defconfig
 make download -j8f
